@@ -1,25 +1,24 @@
-<h1>What happened?</h1>
-<form ng-submit="postsNew.submit()">
-  <div class="form-group">
-    <label>Tube Line</label>
-    <select ng-model="postsNew.post.line" class="form-control">
-      <option ng-repeat="line in postsNew.linesList" value="{{line}}">{{line}}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label>Description</label>
-    <textarea ng-model="postsNew.post.description" class="form-control"></textarea>
-  </div>
-  <div class="form-group">
-    <label>Date</label><br>
-    <input id="enddatefield" type="date" ng-model="postsNew.post.date" class="form-control">
-  </div>
-  <div class="form-group">
-    <label>Time</label><br>
-    <input type="time" name="name" ng-model="postsNew.post.time" class="form-control">
-  </div>
-  <input type="submit" value="Add" class="btn btn-primary pull-right">
-  <a href="javascript:history.back()" class="btn btn-default pull-right">
-    Cancel
-  </a>
-</form>
+<section class="container">
+  <h1>What happened?</h1>
+  <form ng-submit="postsNew.submit()">
+    <div class="form-group">
+      <label>Tube Line</label>
+      <select ng-model="postsNew.post.line" class="form-control">
+        <option ng-repeat="line in postsNew.linesList" value="{{line}}">{{line}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea ng-model="postsNew.post.description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Date</label><br>
+      <input id="enddatefield" type="date" ng-model="postsNew.post.date" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Time</label><br>
+      <input type="time" name="name" ng-model="postsNew.post.time" class="form-control">
+    </div>
+    <input type="submit" value="Fingers crossed..." class="btn btn-primary pull-right">
+  </form>
+</section>
