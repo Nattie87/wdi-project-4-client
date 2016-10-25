@@ -1,17 +1,20 @@
 angular
-  .module("loveOnTheLineApp")
-  .service("TokenService", TokenService);
+.module("loveOnTheLineApp")
+.service("TokenService", TokenService);
 
+
+//service is like an actual constructor function
+//when injected it's newed, instantiated as new
 TokenService.$inject = ["$window", "jwtHelper"];
 function TokenService($window, jwtHelper){
-  const self       = this;
+  const self = this;
 
-  self.setToken    = setToken;
-  self.getToken    = getToken;
+  self.setToken = setToken;
+  self.getToken = getToken;
   self.decodeToken = decodeToken;
-  self.clearToken  = clearToken;
+  self.clearToken = clearToken;
 
-  function setToken(token){
+  function setToken(token) {
     return $window.localStorage.setItem("auth-token", token);
   }
 
@@ -27,5 +30,4 @@ function TokenService($window, jwtHelper){
   function clearToken(){
     return $window.localStorage.removeItem("auth-token");
   }
-
 }

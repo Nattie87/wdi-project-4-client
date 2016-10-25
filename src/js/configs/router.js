@@ -10,6 +10,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   .state("home", {
     url: "/",
     templateUrl: "/js/views/home.html",
+    controller: "homeCtrl as home"
   })
   .state("register", {
     url: "/register",
@@ -25,6 +26,16 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     url: "/users",
     templateUrl:  "/js/views/users/index.html",
     controller:   "usersIndexCtrl as usersIndex",
+  })
+  .state("usersShow", {
+    url: "/users/:id",
+    templateUrl: "/js/views/users/show.html",
+    controller: "usersShowCtrl as usersShow"
+  })
+  .state("usersEdit", {
+    url: "/edit",
+    templateUrl: "/js/views/users/edit.html",
+    controller: "UserEditCtrl as usersEdit",
   });
 
   $urlRouterProvider.otherwise("/");

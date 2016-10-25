@@ -49937,87 +49937,18 @@ if (typeof jQuery === 'undefined') {
 
 }(jQuery);
 
-"use strict";angular.module("loveOnTheLineApp",["ui.router","ngResource","angular-jwt"]);console.log("loaded!");// angular.module('userApp', ['ui.router', 'lbServices'])
-//
-// .controller('UserController', ['$scope', '$state', 'Se_user', function ($scope, $state, Se_user) {
-//     $scope.users = [];
-//
-//     function getSe_users() {
-//         Se_user
-//             .find()
-//             .$promise
-//             .then(function (results) {
-//                 $scope.users = results;
-//             });
-//     }
-//     getSe_users();
-//
-//     $scope.addSe_user = function () {
-//       Se_user
-// .create($scope.user,
-// function(newUser) {
-// console.log(newUser);
-// // only set pristine here, this
-// // callback fires on success
-// $scope.create.$setPristine();
-// },
-// function(err) {
-// console.log(err); // will log the error to the console
-// }
-//
-// );
-//
-//     $scope.editSe_user = function(user_id) {
-//         Se_user
-//             .editById(user_id)
-//             .$promise
-//             .then(function (user_id) {
-//                 getSe_users();
-//         });
-//     };
-//
-//     $scope.removeUser = function (item) {
-//         Se_user
-//             .deleteById(item)
-//             .$promise
-//             .then(function () {
-//                 getSe_users();
-//             });
-//     };
-// }];
-//
-// .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-//
-//     $urlRouterProvider.otherwise('');
-//
-//     $stateProvider
-//
-//         .state('home', {
-//             url: '',
-//             templateUrl: 'partial-home.html',
-//             controller: 'UserController'
-//         })
-//         .state('create', {
-//             url: '/create',
-//             templateUrl: 'partial-create.html',
-//             controller: 'UserController'
-//         })
-//     .state('admin', {
-//         url: '/admin',
-//         templateUrl: 'partial-admin.html',
-//         contoller: 'UserController'
-//     });
-//
-// }]);
 "use strict";angular.module("loveOnTheLineApp",["ui.router","ngResource","angular-jwt"]);
 "use strict";angular.module("loveOnTheLineApp").constant("API","http://localhost:3000/api");
 "use strict";angular.module("loveOnTheLineApp").factory("AuthInterceptor",AuthInterceptor);AuthInterceptor.$inject=["API","TokenService"];function AuthInterceptor(API,TokenService){return{request:function request(config){var token=TokenService.getToken();if(config.url.indexOf(API)===0&&token){config.headers.Authorization="Bearer "+token;}return config;},response:function response(res){if(res.config.url.indexOf(API)===0&&res.data.token){TokenService.setToken(res.data.token);}return res;}};}
-"use strict";angular.module("loveOnTheLineApp").service("CurrentUserService",CurrentUserService);CurrentUserService.$inject=["$rootScope","TokenService"];function CurrentUserService($rootScope,TokenService){var currentUser=TokenService.decodeToken();return{user:currentUser,saveUser:function saveUser(user){currentUser=user;$rootScope.$broadcast("loggedIn");},getUser:function getUser(){return currentUser;},clearUser:function clearUser(){currentUser=null;TokenService.clearToken();$rootScope.$broadcast("loggedOut");}};}
+"use strict";angular.module("loveOnTheLineApp").service("CurrentUserService",CurrentUserService);CurrentUserService.$inject=["$rootScope","TokenService","User"];function CurrentUserService($rootScope,TokenService,User){var currentUser=TokenService.decodeToken();currentUser=User.get(currentUser);return{user:currentUser,saveUser:function saveUser(user){currentUser=user;$rootScope.$broadcast("loggedIn");},getUser:function getUser(){return currentUser;},clearUser:function clearUser(){currentUser=null;TokenService.clearToken();$rootScope.$broadcast("loggedOut");}};}
 "use strict";angular.module("loveOnTheLineApp").controller("usersIndexCtrl",usersIndexCtrl);usersIndexCtrl.$inject=["User"];function usersIndexCtrl(User){var vm=this;User.query(function(data){vm.users=data.users;});}
 "use strict";angular.module("loveOnTheLineApp").config(setUpInterceptor);setUpInterceptor.$inject=["$httpProvider"];function setUpInterceptor($httpProvider){return $httpProvider.interceptors.push("AuthInterceptor");}
 "use strict";angular.module("loveOnTheLineApp").controller("loginCtrl",loginCtrl);loginCtrl.$inject=["User","CurrentUserService"];function loginCtrl(User,CurrentUserService){var vm=this;vm.login=function(){User.login(vm.user).$promise.then(function(data){console.log(data.user);var user=data.user?data.user:null;if(user){CurrentUserService.saveUser(user);}});};}
 "use strict";angular.module("loveOnTheLineApp").controller("mainCtrl",mainCtrl);mainCtrl.$inject=["$rootScope","CurrentUserService","$state"];function mainCtrl($rootScope,CurrentUserService,$state){var vm=this;vm.user=CurrentUserService.getUser();vm.logout=function(){event.preventDefault();CurrentUserService.clearUser();};$rootScope.$on("loggedIn",function(){vm.user=CurrentUserService.getUser();$state.go("usersIndex");});$rootScope.$on("loggedOut",function(){vm.user=null;$state.go("home");});}
 "use strict";angular.module("loveOnTheLineApp").controller("registerCtrl",registerCtrl);registerCtrl.$inject=["User","CurrentUserService"];function registerCtrl(User,CurrentUserService){var vm=this;vm.register=function(){User.register(vm.user).$promise.then(function(data){console.log(data.user);var user=data.user?data.user:null;if(user){CurrentUserService.saveUser(user);}});};}
-"use strict";angular.module("loveOnTheLineApp").config(Router);Router.$inject=["$stateProvider","$locationProvider","$urlRouterProvider"];function Router($stateProvider,$locationProvider,$urlRouterProvider){$locationProvider.html5Mode(true);$stateProvider.state("home",{url:"/",templateUrl:"/js/views/home.html"}).state("register",{url:"/register",templateUrl:"/js/views/register.html",controller:"registerCtrl as register"}).state("login",{url:"/login",templateUrl:"/js/views/login.html",controller:"loginCtrl as login"}).state("usersIndex",{url:"/users",templateUrl:"/js/views/users/index.html",controller:"usersIndexCtrl as usersIndex"});$urlRouterProvider.otherwise("/");}
-"use strict";angular.module("loveOnTheLineApp").service("TokenService",TokenService);TokenService.$inject=["$window","jwtHelper"];function TokenService($window,jwtHelper){var self=this;self.setToken=setToken;self.getToken=getToken;self.decodeToken=decodeToken;self.clearToken=clearToken;function setToken(token){return $window.localStorage.setItem("auth-token",token);}function getToken(){return $window.localStorage.getItem("auth-token");}function decodeToken(){var token=self.getToken();return token?jwtHelper.decodeToken(token):null;}function clearToken(){return $window.localStorage.removeItem("auth-token");}}
-"use strict";angular.module("loveOnTheLineApp").factory("User",userFactory);userFactory.$inject=["API","$resource"];function userFactory(API,$resource){return $resource(API+"/users/:id",{id:"@_id"},{'query':{method:"GET",isArray:false},'register':{method:"POST",url:API+"/register"},'login':{method:"POST",url:API+"/login"}});}
+"use strict";angular.module("loveOnTheLineApp").config(Router);Router.$inject=["$stateProvider","$locationProvider","$urlRouterProvider"];function Router($stateProvider,$locationProvider,$urlRouterProvider){$locationProvider.html5Mode(true);$stateProvider.state("home",{url:"/",templateUrl:"/js/views/home.html",controller:"homeCtrl as home"}).state("register",{url:"/register",templateUrl:"/js/views/register.html",controller:"registerCtrl as register"}).state("login",{url:"/login",templateUrl:"/js/views/login.html",controller:"loginCtrl as login"}).state("usersIndex",{url:"/users",templateUrl:"/js/views/users/index.html",controller:"usersIndexCtrl as usersIndex"}).state("usersShow",{url:"/users/:id",templateUrl:"/js/views/users/show.html",controller:"usersShowCtrl as usersShow"}).state("usersEdit",{url:"/edit",templateUrl:"/js/views/users/edit.html",controller:"UserEditCtrl as usersEdit"});$urlRouterProvider.otherwise("/");}
+"use strict";angular.module("loveOnTheLineApp").controller("usersShowCtrl",usersShowCtrl);usersShowCtrl.$inject=["$rootScope","CurrentUserService","$state"];function usersShowCtrl($rootScope,CurrentUserService,$state){var vm=this;vm.user=CurrentUserService.getUser();}
+"use strict";angular.module("loveOnTheLineApp").service("TokenService",TokenService);//service is like an actual constructor function
+//when injected it's newed, instantiated as new
+TokenService.$inject=["$window","jwtHelper"];function TokenService($window,jwtHelper){var self=this;self.setToken=setToken;self.getToken=getToken;self.decodeToken=decodeToken;self.clearToken=clearToken;function setToken(token){return $window.localStorage.setItem("auth-token",token);}function getToken(){return $window.localStorage.getItem("auth-token");}function decodeToken(){var token=self.getToken();return token?jwtHelper.decodeToken(token):null;}function clearToken(){return $window.localStorage.removeItem("auth-token");}}
+"use strict";angular.module("loveOnTheLineApp").factory("User",userFactory);userFactory.$inject=["API","$resource"];function userFactory(API,$resource){return $resource(API+"/users/:id",{id:"@id"},{'query':{method:"GET",isArray:true},'register':{method:"POST",url:API+"/register"},'login':{method:"POST",url:API+"/login"}});}

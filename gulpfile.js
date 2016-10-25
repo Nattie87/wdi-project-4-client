@@ -1,7 +1,3 @@
-
-
-
-
 const gulp     	       = require("gulp");
 const babel    	       = require("gulp-babel");
 const cleanCSS 	       = require("gulp-clean-css");
@@ -149,7 +145,7 @@ gulp.task("watch", () => {
 // nodemon
 gulp.task('nodemon', () => {
   return nodemon({
-    script: 'index.js'
+    script: 'server.js'
   }).on('readable', () => {
     this.stdout.on('data', chunk => {
       if (/^listening/.test(chunk)) {
