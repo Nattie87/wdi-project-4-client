@@ -9,10 +9,10 @@ TokenService.$inject = ["$window", "jwtHelper"];
 function TokenService($window, jwtHelper){
   const self = this;
 
-  self.setToken = setToken;
-  self.getToken = getToken;
+  self.setToken    = setToken;
+  self.getToken    = getToken;
   self.decodeToken = decodeToken;
-  self.clearToken = clearToken;
+  self.clearToken  = clearToken;
 
   function setToken(token) {
     return $window.localStorage.setItem("auth-token", token);

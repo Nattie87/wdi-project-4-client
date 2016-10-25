@@ -1,0 +1,7 @@
+<img ng-src="{{ usersShow.user.image }}">
+<h1>{{ usersShow.user.username }}</h1>
+<h3>{{ usersShow.user.first_name }} {{ usersShow.user.last_name }}</h3>
+<h5>{{ usersShow.user.email }}</h5>
+
+<button class="btn btn-primary" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
+<button class="btn btn-danger" ng-click="usersShow.userDelete()">Delete</button>

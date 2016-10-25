@@ -3,5 +3,4 @@ angular
     "ui.router",
     "ngResource",
     "angular-jwt"
-
   ]);

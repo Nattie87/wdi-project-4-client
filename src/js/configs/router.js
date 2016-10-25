@@ -1,6 +1,6 @@
 angular
-  .module("loveOnTheLineApp")
-  .config(Router);
+.module("loveOnTheLineApp")
+.config(Router);
 
 Router.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
 function Router($stateProvider, $locationProvider, $urlRouterProvider){
@@ -9,8 +9,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   $stateProvider
   .state("home", {
     url: "/",
-    templateUrl: "/js/views/home.html",
-    controller: "homeCtrl as home"
+    templateUrl: "/js/views/home.html"
   })
   .state("register", {
     url: "/register",
@@ -24,8 +23,8 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   })
   .state("usersIndex", {
     url: "/users",
-    templateUrl:  "/js/views/users/index.html",
-    controller:   "usersIndexCtrl as usersIndex",
+    templateUrl: "/js/views/users/index.html",
+    controller:  "usersIndexCtrl as usersIndex",
   })
   .state("usersShow", {
     url: "/users/:id",
@@ -33,9 +32,29 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: "usersShowCtrl as usersShow"
   })
   .state("usersEdit", {
-    url: "/edit",
+    url: "/users/:id/edit",
     templateUrl: "/js/views/users/edit.html",
-    controller: "UserEditCtrl as usersEdit",
+    controller: "usersEditCtrl as usersEdit",
+  })
+  .state("postsIndex", {
+    url: "/posts",
+    templateUrl: "/js/views/posts/index.html",
+    controller:  "postsIndexCtrl as postsIndex",
+  })
+  .state("postsNew", {
+    url: "/posts/new",
+    templateUrl: "/js/views/posts/new.html",
+    controller:  "postsNewCtrl as postsNew",
+  })
+  .state("postsShow", {
+    url: "/posts/:id",
+    templateUrl: "/js/views/posts/show.html",
+    controller: "postsShowCtrl as postsShow"
+  })
+  .state("postsEdit", {
+    url: "/posts/:id/edit",
+    templateUrl: "/js/views/posts/edit.html",
+    controller: "postsEditCtrl as postsEdit",
   });
 
   $urlRouterProvider.otherwise("/");
