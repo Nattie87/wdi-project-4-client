@@ -1,12 +1,35 @@
 body {
-  font-family: $body-font;
+  // font-family: $body-font;
+  font-family: 'Quicksand', sans-serif;
+
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: $headings-font;
+  // font-family: $headings-font;
+  font-family: 'Quicksand', sans-serif;
   color: $blue;
+  text-align: center;
 }
 
 img {
   border-radius: 100%;
+}
+
+.content {
+      margin: 43px;
+    text-align: center;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+      padding-top: 77px;
+}
+
+.usersShow {
+  padding-top: 75px;
+}
+
+.form ng-pristine {
+      padding-top: 75px;
 }

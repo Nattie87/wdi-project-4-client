@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>LoveOnTheLine</title>
-  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Roboto|Roboto+Slab" rel="stylesheet">
-  <link charset="utf-8" rel="stylesheet" href="/css/style.css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Roboto|Roboto+Slab" rel="stylesheet"> -->
+<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700" rel="stylesheet">
+<link charset="utf-8" rel="stylesheet" href="/css/style.css">
   <script  charset="utf-8" src="/js/app.js" type="text/javascript"></script>
   <base href="/" />
 </head>
@@ -29,7 +30,7 @@
             <li ng-hide="main.user"><a ui-sref="login">Login</a></li>
             <li ng-hide="main.user"><a ui-sref="register">Register</a></li>
 
-            <li ng-show="main.user"><a ui-sref="postsIndex">Search for love</a></li>
+            <li ng-show="main.user"><a ui-sref="postsIndex">Was it you?</a></li>
             <li ng-show="main.user"><a ui-sref="postsNew">Post a love line</a></li>
             <li ng-show="main.user">
             <a class='nav-text' ui-sref="chatsIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Chats</a></li>

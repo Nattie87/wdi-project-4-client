@@ -1,11 +1,16 @@
 <section class="postsIndex container">
-  <h1>Recently...</h1>
+  <h1>I saw you on ...</h1>
   <ul>
     <li ng-repeat="post in postsIndex.posts">
       <img ng-src={{post.user.image}}>
       <div class="content">
-        <p>I saw you on the {{post.line}} at {{ post.time | date: 'h:mma' }} on {{ post.date | formatAsLongDateTime }}. You were the:<p>
+        <p>The {{post.line}} at {{ post.time | date: 'h:mma' }} on {{ post.date | formatAsLongDateTime }}. <br>
+          You were the:<p>
+            <br>
         <h2>{{post.description}}</h2>
+        <button type="button" class="btn btn-success">Message ;)</button>
+      </div>
+
       </div>
     </li>
   </ul>

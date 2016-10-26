@@ -1,8 +1,11 @@
 .jumbotron {
   text-align: center;
-  background-image: url("/images/love.jpg");
+  background-image: url("https://images.unsplash.com/photo-1421058129430-00339c6e7d37?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=60da2f8f2cd5184b109a6500bf6cca19");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  color: $white;
+  color: white;
+  padding-bottom: 364px;
+  opacity: 0.7;
+
 }

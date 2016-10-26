@@ -6,8 +6,8 @@ ChatsIndexCtrl.$inject = ["Chat", "$stateParams", "$state"];
 function ChatsIndexCtrl(Chat, $stateParams, $state){
   const vm                = this;
 
-  Request.query(data => {
+  Chat.query(data => {
     vm.chats           = data.chats;
-    vm.chats           = data.chats;
+    // vm.chats           = data.chats;
   });
 }
