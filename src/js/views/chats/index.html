@@ -1,0 +1,17 @@
+<ul class="container">
+  <li class="col-sm-4" ng-repeat="chat in chat.chats track by $index" ui-sref="chatsShow({ id: chat._id })">
+    <div class="mainCard">
+    <img ng-src="{{ chat.sender.image }}">
+    <div class="cardDiv">
+    <p class="cardText">
+  <strong>{{ chat.sender.username }} </strong>
+    </p>
+    <p class="cardText">
+      <strong>
+  {{ chat.ChatsIndexCtrl.chat }}
+  </strong>
+    </p>
+    </div>
+  </div>
+  </li>
+</ul>

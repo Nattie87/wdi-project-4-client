@@ -15,12 +15,7 @@ function mainCtrl($rootScope, CurrentUserService, $state, $stateParams) {
 
   $rootScope.$on("loggedIn", () => {
     vm.user = CurrentUserService.getUser();
-    $state.go("home");
-  });
-
-  $rootScope.$on("loggedIn", () => {
-    vm.user = CurrentUserService.getUser();
-    $state.go("home");
+    $state.go("postsIndex");
   });
 
   vm.selected = () => {
