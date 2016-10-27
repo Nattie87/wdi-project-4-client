@@ -1,9 +1,9 @@
 <section class="postsIndex container">
-  <!-- <h1>I saw you on ...</h1> -->
+
   <ul>
-    <li ng-repeat="post in postsIndex.posts">
+    <li class="index" ng-repeat="post in postsIndex.posts | orderBy: '-'">
       <img ng-src={{post.user.image}}>
-      <div class="content">
+      <div id="content">
         <p>The {{post.line}} at {{ post.time | date: 'h:mma' }} on {{ post.date | formatAsLongDateTime }}.
           You were the:<p>
 

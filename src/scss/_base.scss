@@ -6,19 +6,20 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   // font-family: $headings-font;
-  font-family: 'Quicksand', sans-serif;
+  font-family:'Karla', sans-serif;
   color: $blue;
-  text-align: center;
+  // text-align: left;
 }
 
 img {
   border-radius: 100%;
 }
 
-.content {
-      margin: 43px;
-    text-align: center;
-}
+// .content {
+//     // margin: 43px;
+//     text-align: left;
+//     width: 60%;
+// }
 
 form {
   width: 50%;
@@ -26,9 +27,9 @@ form {
       padding-top: 77px;
 }
 
-.usersShow {
-  padding-top: 75px;
-}
+// .usersShow {
+//   padding-top: 75px;
+// }
 
 .form ng-pristine {
       padding-top: 75px;

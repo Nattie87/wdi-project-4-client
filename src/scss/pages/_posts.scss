@@ -4,13 +4,16 @@
     width: 200px;
     // max-width: 200px;
     float: left;
-    margin: 0 10px 0 0;
+    // margin: 0 10px 0 0;
     // display: grid;
+    margin: 3%;
   }
 
-  div.content {
-    padding-top: 25px;
-        margin-right: -73px;
+  #content {
+    width: 80%;
+    padding-top: 47px;
+    text-align: left;
+
   }
 
   ul {
@@ -24,25 +27,35 @@
       list-style: none;
       clear: both;
       display: block;
-      margin: 0 0 140px;
+      // margin: 0 0 140px;
+
+    }
+
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  // width: 70%;
+// margin: auto;
+// margin-left: 87px;
 
 }
 
-    }
+form.message1 {
+  text-align: center;
+}
 
-      }
-    .ng-scope {
-      list-style: none;
+.index {
+  margin: 0 auto;
 
-    }
-    ul {
-      list-style: none;
-      width: 70%;
-    // margin: auto;
-    margin-left: 87px;
+}
 
-    }
+.response {
+  text-align: center;
+}
 
-  form {
-    margin-right: 168px;
-  }
+h1#post-show {
+  text-align: center !important;
+}

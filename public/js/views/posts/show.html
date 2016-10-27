@@ -1,8 +1,8 @@
-<h1>Post Show</h1>
+<h1 id="post-show">Post Show</h1>
 
 <!-- <h4>Comment</h4> -->
 
-<form ng-submit="postsShow.submit()">
+<form class="message1" ng-submit="postsShow.submit()">
   <label for="message">Message</label>
   <input type="text" name="message" ng-model="postsShow.comment.message">
   <input class="btn btn-success" type="submit" value="Comment">
@@ -10,15 +10,18 @@
 
 
 <ul>
-  <li ng-repeat="comment in postsShow.post.comments">
+  <li class="response" ng-repeat="comment in postsShow.post.comments">
     <ul>
       <li>
+        <br>
         <p>{{ comment.message }}</p>
-        <p>{{ comment.user.username }}</p>
-        <!-- <p>{{ comment.user.username }}</p> -->
-        <img ng-src="{{ comment.user.image }}" width="40">
+        <br>
+        <p>{{ comment.user.username }} <img ng-src="{{ comment.user.image }}" width="40"></p>
+        <br>
 
         <button ng-click="postsShow.commentDelete(comment)" ng-if="comment.user.id === main.user.id" class="btn btn-danger">Delete</button>
+
+          <button ng-click="postsShow.commentReply(comment)" ng-if="comment.user.id === main.user.id" class="btn btn-success">Reply</button>
       </li>
     </ul>
   </li>
