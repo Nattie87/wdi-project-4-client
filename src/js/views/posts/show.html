@@ -1,9 +1,25 @@
-<section class="container">
-  <img ng-src="{{ usersShow.user.image }}">
-  <h1>{{ usersShow.user.username }}</h1>
-  <h3>{{ usersShow.user.first_name }} {{ usersShow.user.last_name }}</h3>
-  <h5>{{ usersShow.user.email }}</h5>
+<h1>Post Show</h1>
 
-  <button class="btn btn-primary" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
-  <button class="btn btn-danger" ng-click="usersShow.userDelete()">Delete</button>
-</section>
+<!-- <h4>Comment</h4> -->
+
+<form ng-submit="postsShow.submit()">
+  <label for="message">Message</label>
+  <input type="text" name="message" ng-model="postsShow.comment.message">
+  <input class="btn btn-success" type="submit" value="Comment">
+</form>
+
+
+<ul>
+  <li ng-repeat="comment in postsShow.post.comments">
+    <ul>
+      <li>
+        <p>{{ comment.message }}</p>
+        <p>{{ comment.user.username }}</p>
+        <!-- <p>{{ comment.user.username }}</p> -->
+        <img ng-src="{{ comment.user.image }}" width="40">
+
+        <button ng-click="postsShow.commentDelete(comment)" ng-if="comment.user.id === main.user.id" class="btn btn-danger">Delete</button>
+      </li>
+    </ul>
+  </li>
+</ul>

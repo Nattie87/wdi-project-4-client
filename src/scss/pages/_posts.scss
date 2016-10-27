@@ -8,10 +8,16 @@
     // display: grid;
   }
 
+  div.content {
+    padding-top: 25px;
+        margin-right: -73px;
+  }
+
   ul {
     margin: 0;
     padding: 0;
     display: grid;
+    text-align: center;
 
 
     li {
@@ -19,9 +25,24 @@
       clear: both;
       display: block;
       margin: 0 0 140px;
-      // display: grid;
+
+}
+
+    }
 
       }
+    .ng-scope {
+      list-style: none;
+
     }
+    ul {
+      list-style: none;
+      width: 70%;
+    // margin: auto;
+    margin-left: 87px;
+
+    }
+
+  form {
+    margin-right: 168px;
   }
-}

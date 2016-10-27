@@ -1,5 +1,5 @@
 <section class="postsIndex container">
-  <h1>I saw you on ...</h1>
+  <!-- <h1>I saw you on ...</h1> -->
   <ul>
     <li ng-repeat="post in postsIndex.posts">
       <img ng-src={{post.user.image}}>
@@ -8,9 +8,7 @@
           You were the:<p>
 
         <h2>{{post.description}}</h2>
-        <button type="button" class="btn btn-success">Message ;)</button>
-      </div>
-
+        <button ui-sref="postsShow({ id: post.id })" type="button" class="btn btn-success">Go ahead, message them!</button>
       </div>
     </li>
   </ul>

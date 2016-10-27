@@ -1,19 +1,32 @@
 angular
   .module("loveOnTheLineApp")
-  .controller("usersShowCtrl", usersShowCtrl);
+  .controller("postsShowCtrl", postsShowCtrl);
 
-usersShowCtrl.$inject = ["User", "$stateParams", "$state"];
-function usersShowCtrl(User, $stateParams, $state) {
+postsShowCtrl.$inject = ['Post', '$stateParams', '$http', 'API'];
+function postsShowCtrl(Post, $stateParams, $http, API) {
   const vm = this;
 
-  vm.user = User.get($stateParams);
+  vm.post = Post.get($stateParams);
 
-  vm.userDelete = () => {
-    User
-    .delete($stateParams)
-    .$promise
-    .then(data => {
-      $state.go("home");
-    });
+  vm.submit = () => {
+    vm.comment.post_id = $stateParams.id;
+
+    $http
+      .post(`${API}/comments`, vm.comment)
+      .then(data => {
+        vm.post.comments.push(data.data);
+        vm.comment = '';
+      });
+  };
+
+  vm.commentDelete = (comment) => {
+
+    $http
+      .delete(`${API}/comments/${ comment.id }`)
+      .then(data => {
+        console.log(data);
+        let index = vm.post.comments.indexOf(data.data.id);
+        vm.post.comments.splice(index, 1);
+      });
   };
 }

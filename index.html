@@ -30,10 +30,10 @@
             <li ng-hide="main.user"><a ui-sref="login">Login</a></li>
             <li ng-hide="main.user"><a ui-sref="register">Register</a></li>
 
-            <li ng-show="main.user"><a ui-sref="postsIndex">Was it you?</a></li>
+            <li ng-show="main.user"><a ui-sref="postsIndex">I saw you on ...</a></li>
             <li ng-show="main.user"><a ui-sref="postsNew">Post a love line</a></li>
-            <li ng-show="main.user">
-            <a class='nav-text' ui-sref="chatsIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Chats</a></li>
+            <!-- <li ng-show="main.user">
+            <a class='nav-text' ui-sref="chatsIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Chats</a></li> -->
             <li ng-show="main.user"><a ui-sref="usersShow({ id: main.user.id})">Profile</a></li>
             <li ng-show="main.user"><a ui-sref="login" ng-click="main.logout()" ui-sref-opts="{reload: true}">Logout</a></li>
           </ul>
