@@ -1,3 +1,3 @@
 # wdi-project-4-client
 The Angular client for wdi-project-4.
-(http://imgur.com/DIqTZ3I.png "LoveOnTheLine”)
+![alt text](http://imgur.com/DIqTZ3I.png (437KB)"LoveOnTheLine")
