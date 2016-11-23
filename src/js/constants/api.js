@@ -1,3 +1,3 @@
 angular
   .module("loveOnTheLineApp")
-  .constant("API", `http://localhost:3000/api`);
+  .constant("API", `https://love-on-the-line-backend.herokuapp.com/api`);
