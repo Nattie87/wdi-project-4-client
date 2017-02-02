@@ -2,17 +2,15 @@
   img {
     height: 200px;
     width: 200px;
-    // max-width: 200px;
     float: left;
-    // margin: 0 10px 0 0;
-    // display: grid;
     margin: 3%;
   }
 
   #content {
     width: 80%;
-    padding-top: 47px;
+    padding-top: 56px;
     text-align: left;
+    margin-top: 46px;
 
   }
 
@@ -58,4 +56,17 @@ form.message1 {
 
 h1#post-show {
   text-align: center !important;
+  padding-top: 45px;
+}
+
+.lowdown {
+  text-align: center;
+}
+
+.register {
+  text-align: center;
+
+}
+input:focus {
+  outline: none;
 }

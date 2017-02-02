@@ -3,6 +3,15 @@
   img {
     max-width: 300px;
     display: inline-block;
-    padding-top: 74px;
+    margin-top: 60px;
+    // padding-top: 74px;
   }
+}
+
+.login {
+      text-align: center;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
